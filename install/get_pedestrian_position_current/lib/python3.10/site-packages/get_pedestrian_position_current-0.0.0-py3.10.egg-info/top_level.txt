@@ -1,0 +1,1 @@
+get_pedestrian_position_current

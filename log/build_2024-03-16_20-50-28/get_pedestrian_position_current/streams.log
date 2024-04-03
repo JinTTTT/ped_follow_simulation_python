@@ -1,0 +1,27 @@
+[0.431s] Invoking command in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/get_pedestrian_position_current': PYTHONPATH=/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/prefix_override:/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/get_pedestrian_position_current build --build-base /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/build install --record /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/install.log --single-version-externally-managed
+[0.569s] running egg_info
+[0.569s] writing ../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info/PKG-INFO
+[0.569s] writing dependency_links to ../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info/dependency_links.txt
+[0.569s] writing entry points to ../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info/entry_points.txt
+[0.570s] writing requirements to ../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info/requires.txt
+[0.570s] writing top-level names to ../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info/top_level.txt
+[0.571s] reading manifest file '../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info/SOURCES.txt'
+[0.571s] adding license file 'LICENSE'
+[0.571s] writing manifest file '../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info/SOURCES.txt'
+[0.571s] running build
+[0.572s] running build_py
+[0.572s] copying get_pedestrian_position_current/pedestrian_position_publisher.py -> /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/build/lib/get_pedestrian_position_current
+[0.572s] running install
+[0.572s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.572s]   warnings.warn(
+[0.572s] running install_lib
+[0.573s] copying /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/build/lib/get_pedestrian_position_current/pedestrian_position_publisher.py -> /home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages/get_pedestrian_position_current
+[0.573s] byte-compiling /home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages/get_pedestrian_position_current/pedestrian_position_publisher.py to pedestrian_position_publisher.cpython-310.pyc
+[0.574s] running install_data
+[0.574s] running install_egg_info
+[0.575s] removing '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages/get_pedestrian_position_current-0.0.0-py3.10.egg-info' (and everything under it)
+[0.575s] Copying ../../build/get_pedestrian_position_current/get_pedestrian_position_current.egg-info to /home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages/get_pedestrian_position_current-0.0.0-py3.10.egg-info
+[0.576s] running install_scripts
+[0.589s] Installing pedestrain_pos_current script to /home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/get_pedestrian_position_current
+[0.589s] writing list of installed files to '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/install.log'
+[0.605s] Invoked command in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/get_pedestrian_position_current' returned '0': PYTHONPATH=/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/prefix_override:/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/get_pedestrian_position_current build --build-base /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/build install --record /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/install.log --single-version-externally-managed

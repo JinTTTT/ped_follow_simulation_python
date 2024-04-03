@@ -1,0 +1,3 @@
+[console_scripts]
+update_vehicle_state_exec = update_vehicle_state.update_vehicle_state_node:main
+
