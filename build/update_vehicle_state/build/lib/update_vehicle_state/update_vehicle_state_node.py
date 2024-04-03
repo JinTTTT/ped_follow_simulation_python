@@ -25,7 +25,7 @@ class VehicleUpdate(Node):
 
         self.vehicle_x = 0.0
         self.vehicle_y = 0.0
-        self.vehicle_yaw = 80 * np.pi / 180
+        self.vehicle_yaw = 0.0
 
         self.dt = 0.1 
 
