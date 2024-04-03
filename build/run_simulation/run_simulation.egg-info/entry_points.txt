@@ -1,3 +1,0 @@
-[console_scripts]
-run_simulation_exec = run_simulation.run_simulation_node:main
-

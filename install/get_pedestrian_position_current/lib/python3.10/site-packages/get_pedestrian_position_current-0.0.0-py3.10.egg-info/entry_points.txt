@@ -1,3 +1,0 @@
-[console_scripts]
-get_pedestrian_position_current_exec = get_pedestrian_position_current.pedestrian_position_node:main
-
