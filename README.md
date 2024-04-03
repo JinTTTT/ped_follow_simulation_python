@@ -1,0 +1,2 @@
+# ped_follow_simulation_python
+该项目用于模拟自动驾驶中，保持安全距离的情况下，自动跟踪行人
