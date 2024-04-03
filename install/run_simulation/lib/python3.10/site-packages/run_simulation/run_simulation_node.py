@@ -6,16 +6,26 @@ from geometry_msgs.msg import Point
 from std_msgs.msg import Float32
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 
 class RunSimulation(Node):
     def __init__(self):
         super().__init__('run_simulation_node')
 
+        self.ped_x = 0.0
+        self.ped_y = 0.0
+        
+
+        self.vehicle_x = 0.0
+        self.vehicle_y = 0.0
+        self.vehicle_yaw = 0.0
+        
+
         # 初始化用于存储数据的列表
         self.ped_x_list = []
         self.ped_y_list = []
-        self.ped_yaw_list = []
+    
         self.vel_list = []
         self.steering_list = []
         self.vehicle_x_list = []
@@ -27,13 +37,17 @@ class RunSimulation(Node):
         self.dd_steering_subscription =  self.create_subscription(Float32, 'driving_decision_steering_ang',  self.vehicle_steering_callback, 10)
         self.vehicle_pose_subscription =  self.create_subscription(Pose2D, 'vehicle_pose',  self.vehicle_pose_callback, 10)
 
-        self.timer = self.create_timer(10.0, self.stop_simulation)
+        self.timer = self.create_timer(20.0, self.stop_simulation)
         
     def pedestrian_pos_callback(self, msg):
 
-        self.ped_x_list.append(msg.x)
-        self.ped_y_list.append(msg.y)
-        self.ped_yaw_list.append(msg.theta)
+        # 计算行人的全局坐标
+        global_ped_x = self.vehicle_x + msg.x * math.cos(self.vehicle_yaw) - msg.y * math.sin(self.vehicle_yaw)
+        global_ped_y = self.vehicle_y + msg.x * math.sin(self.vehicle_yaw) + msg.y * math.cos(self.vehicle_yaw)
+
+        self.ped_x_list.append(global_ped_x)
+        self.ped_y_list.append(global_ped_y)
+        
         #self.get_logger().info('I heard: x=%f, y=%f, yaw = %f' % (msg.x, msg.y, msg.theta))
         
     def vehicle_vel_callback(self, msg):
@@ -49,6 +63,11 @@ class RunSimulation(Node):
 
     def vehicle_pose_callback(self, msg):
 
+        # 更新车辆的全局位置和朝向
+        self.vehicle_x = msg.x
+        self.vehicle_y = msg.y
+        self.vehicle_yaw = msg.theta
+
         self.vehicle_x_list.append(msg.x)
         self.vehicle_y_list.append(msg.y)
         self.vehicle_yaw_list.append(msg.theta)       
@@ -61,40 +80,54 @@ class RunSimulation(Node):
         self.timer.cancel()  # 停止计时器以结束仿真
 
     def visualize_data(self):
-        plt.figure(figsize=(10, 8))
 
-        # 绘制车辆和行人路径
-        plt.subplot(2, 2, 1)
-        plt.plot(self.vehicle_x_list, self.vehicle_y_list, 'k-', linewidth=1, label='Vehicle Path')
-        plt.plot(self.ped_x_list, self.ped_y_list, 'b.', markersize=4, label='Pedestrian Path')
-        plt.scatter(self.ped_x_list[-1], self.ped_y_list[-1], color='g', s=64, label='Current Pedestrian Position')
-        plt.xlabel('X Position [m]')
-        plt.ylabel('Y Position [m]')
-        plt.title('Simulation Path')
-        plt.legend(loc='upper left')
-        plt.axis('equal')
+        plt.ion()
+        figure = plt.figure(figsize=(10, 8))
+        i = 1
+        while True:
+            plt.clf()  # 清除当前图形
 
-        # 绘制转向角度
-        plt.subplot(2, 2, 3)
-        plt.plot(self.steering_list, 'b-', linewidth=1, label='Steering Angle')
-        plt.axhline(y=30, color='r', linestyle='--', linewidth=1, label='Max Steering Angle')
-        plt.axhline(y=-30, color='r', linestyle='--', linewidth=1, label='Min Steering Angle')
-        plt.xlabel('Time [s]')
-        plt.ylabel('Steering Angle [deg]')
-        plt.title('Steering Angle Over Time')
-        plt.legend(loc='best')
+            if i > len(self.vehicle_x_list):  # 如果i超过了数据长度，结束循环
+                break
 
-        # 绘制速度
-        plt.subplot(2, 2, 4)
-        plt.plot(self.vel_list, 'b-', linewidth=1, label='Velocity')
-        plt.axhline(y=2, color='r', linestyle='--', linewidth=1, label='Max Velocity')  # v_max converted to m/s
-        plt.xlabel('Time [s]')
-        plt.ylabel('Velocity [m/s]')
-        plt.title('Velocity Over Time')
-        plt.legend(loc='best')
+            # 绘制车辆和行人路径
+            ax1 = figure.add_subplot(2, 2, 1)
+            ax1.plot(self.vehicle_x_list[:i], self.vehicle_y_list[:i], 'k-', linewidth=1, label='Vehicle Path')
+            ax1.plot(self.ped_x_list[:i], self.ped_y_list[:i], 'b.', markersize=4, label='Pedestrian Path')
+            if i > 1:  # 确保至少有一个点
+                ax1.scatter(self.ped_x_list[i-1], self.ped_y_list[i-1], color='g', s=64, label='Current Pedestrian Position')
+                ax1.scatter(self.vehicle_x_list[i-1], self.vehicle_y_list[i-1], color='g', s=64, label='Current Vehicle Position')
+                
+            ax1.set_xlabel('X Position [m]')
+            ax1.set_ylabel('Y Position [m]')
+            ax1.set_title('Simulation Path')
+            ax1.legend(loc='upper left')
+            ax1.axis('equal')
 
-        plt.tight_layout()
-        plt.show()
+            # 绘制转向角度
+            ax2 = figure.add_subplot(2, 2, 3)
+            ax2.plot(self.steering_list[:i], 'b-', linewidth=1, label='Steering Angle')
+            ax2.set_xlabel('Time [s]')
+            ax2.set_ylabel('Steering Angle [deg]')
+            ax2.set_title('Steering Angle Over Time')
+            ax2.legend(loc='best')
+
+            # 绘制速度
+            ax3 = figure.add_subplot(2, 2, 4)
+            ax3.plot(self.vel_list[:i], 'b-', linewidth=1, label='Velocity')
+            ax3.set_xlabel('Time [s]')
+            ax3.set_ylabel('Velocity [m/s]')
+            ax3.set_title('Velocity Over Time')
+            ax3.legend(loc='best')
+
+            plt.tight_layout()
+            plt.draw()
+            plt.pause(0.1)  # 短暂暂停，以便观察到更新的图形
+
+            i += 1  # 更新循环变量
+
+        plt.ioff()  # 关闭交互模式
+
   
 
         

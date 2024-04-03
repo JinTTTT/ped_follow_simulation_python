@@ -22,6 +22,9 @@ class DrivingDecision(Node):
         self.vehicle_yaw = 0.0
         self.last_delta = 0.0
 
+        self.desired_vehicle_v = 0.0
+        self.desired_steering = 0.0
+
         self.v_max = 2.0  # 假设的最大速度
         self.acc_max = 2.0  # 假设的最大加速度
         self.track_distance = 1.0  # 与行人保持的距离
@@ -65,120 +68,75 @@ class DrivingDecision(Node):
         # Parameter Definieren
         steering_range_max = math.pi / 6            # radiant, maximale Lenkungswinkel am Rad
         steering_ang_vel_max = 15                   # deg/s, maximale Lenksgeschwindigkeit
-        K_lateral = 0.0                             # Querabweichungsregekung Proportionalverstärkung
         K_yaw =  0.8                                # Gierwinkelsregelung Proportionalverstärkung
         
-        # 1. Querabweichungsregelung
-        direction_vehicle_to_pedestrian = [self.ped_x - self.vehicle_x, self.ped_y - self.vehicle_y]  # RichtungsVektor: Fahrzeug zu Fußgänger
-        direction_vehicle = [math.cos(self.vehicle_yaw), math.sin(self.vehicle_yaw)]  # RichtungsVektor: Fahrzeug selbst
+    
+        yaw_error = math.atan2(self.ped_y, self.ped_x)
+        delta = K_yaw * yaw_error
 
-        # Kreuzprodukt, um zu bestimmen, ob der Fußgänger links oder rechts vom Fahrzeug liegt
-        cross_product = direction_vehicle_to_pedestrian[1] * direction_vehicle[0] - direction_vehicle_to_pedestrian[0] * direction_vehicle[1]
-
-        # Berechnung des Querdifferenz (示例)
-        dx = self.ped_x - self.vehicle_x
-        dy = self.ped_y - self.vehicle_y
-        # print('ped is %f, %f'%(self.ped_x, self.ped_y))
-        # print('vehicl is %f, %f'%(self.vehicle_x, self.vehicle_y))
-        
-        if cross_product > 0:
-            lateral_error = math.sqrt(dx**2 + dy**2) * math.cos(self.ped_yaw) * 1
-        elif cross_product < 0:
-            lateral_error = math.sqrt(dx**2 + dy**2) * math.cos(self.ped_yaw) * -1
-        else:
-            lateral_error = math.sqrt(dx**2 + dy**2) * math.cos(self.ped_yaw) * 0
-
-        # print('abs error is', math.sqrt(dx**2 + dy**2))
-        # print('lateral error is', lateral_error)
-        # print('cos is', math.cos(self.ped_yaw))
-        # Berechnung der Steuergröße (Lenkwinkel)
-        delta_lateral = K_lateral * lateral_error
-
-        # 2. Gierwinkelsregelung
-        yaw_to_target = math.atan2(self.ped_y - self.vehicle_y, self.ped_x - self.vehicle_x)  # Berechnung des Gierwinkels vom Fahrzeug zum Fußgänger
-
-        # Berechnung des Gierwinkelsdifferenz
-        yaw_error = yaw_to_target - self.vehicle_yaw
-
-        # Berechnung der Steuergröße (Lenkwinkel)
-        delta_yaw = K_yaw * yaw_error
-
-        # neuer Lenkwinkel = Lenkwinkel der Querabweichungsregelung + Lenkwinkel der Gierwinkelsregelung
-        delta = delta_lateral + delta_yaw
-        
-        # Begrenzung des Lenkwinkel und der Lenkgeschwindigkeit
         delta = max(min(delta, steering_range_max), -steering_range_max)
-        
         delta_change = delta - self.last_delta
-        max_delta_change = math.radians(steering_ang_vel_max) * self.dt  # Umwandlung von Grad/s zu Radiant/s und Multiplikation mit dt
 
-        # Lenkgeschwindigkeit begrenzen
+        max_delta_change = math.radians(steering_ang_vel_max) * self.dt
+        
         if abs(delta_change) > max_delta_change:
             delta_change = math.copysign(max_delta_change, delta_change)
         
-        # Lenkwinkel aktualisieren und im gültigen Bereich halten
         new_delta = self.last_delta + delta_change
         
+        new_delta = max(min(new_delta, steering_range_max), -steering_range_max)
+
+        self.last_delta = new_delta
+
         return new_delta
     
 
-    def velocity_control(self, last_velocity, v_max, acc_max, vehicle_x, vehicle_y, target_x, target_y, track_distance, dt):
-        """
-        Diese Funktion berechnet eine Zielgeschwindigkeit für das Fahrzeug,
-        basierend auf den Positionsinformationen des Fahrzeugs und des vorausfahrenden Fußgängers.
-        Die Zielgeschwindigkeit ermöglicht es dem Fahrzeug, dem Fußgänger bei gleichzeitiger Einhaltung eines sicheren Abstands zu folgen.
-        """
-
+    def velocity_control(self):
         Kp_distance = 0.5  # P-regler für Abstandregelung
         Kp_vel = 2.0  # P-regler für Geschwindigkeitsregelung
 
-        # Äußere Schleife: Abstandsregelung
-        distance_to_target = math.sqrt((vehicle_x - target_x)**2 + (vehicle_y - target_y)**2)
-        distance_diff = distance_to_target - track_distance
+        # Abstandsregelung basierend auf der x-Position des Fußgängers relativ zum Fahrzeug
+        distance_diff = self.ped_x - self.track_distance
 
-        # Wenn der Abstand zum Fußgänger kleiner als der Sicherheitsabstand,
-        # soll_geschwindigkeit = 0, vollbremsen
+        # Wenn der Abstand kleiner oder gleich dem Sicherheitsabstand ist,
+        # soll Geschwindigkeit = 0, vollbremsen
         if distance_diff <= 0:
             velocity_ref = 0
         else:
             velocity_ref = Kp_distance * distance_diff  
-            velocity_ref = min(velocity_ref, v_max)    # Beschränkung der Geschwindigkeit
+            velocity_ref = min(velocity_ref, self.v_max)  # Beschränkung der Geschwindigkeit auf v_max
 
-        # Innere Schleife: Geschwindigkeitsregelung
-        velocity_diff = velocity_ref - last_velocity
+        # Geschwindigkeitsregelung
+        velocity_diff = velocity_ref - self.last_velocity
         acceleration_command = Kp_vel * velocity_diff  # P-regler für Geschwindigkeitsregelung
 
-        # Beschränkung der Beschleunigung
-        acceleration_command = min(acceleration_command, acc_max)
+        # Beschleunigung begrenzen
+        acceleration_command = min(acceleration_command, self.acc_max * self.dt)  # Beschleunigungsgrenze (maximal 2 m/s^2
         
         # aktualisieren die neue Geschwindigkeit
-        new_velocity = last_velocity + acceleration_command * dt
+        new_velocity = self.last_velocity + acceleration_command * self.dt
 
-        # Beschränkung der neue Geschwindigkeit im Intervall [0, v_max]
-        new_velocity = max(min(new_velocity, v_max), 0)
+        # Beschränkung der neuen Geschwindigkeit im Intervall [0, v_max]
+        new_velocity = max(min(new_velocity, self.v_max), 0)
 
-        return new_velocity, velocity_ref
+        self.last_velocity = new_velocity
+
+        return new_velocity
+
     
     def publish_driving_decision(self):
 
-        desired_steering_angle = self.steering_control()
+        self.desired_steering = self.steering_control()
+        self.desired_vehicle_v = self.velocity_control()
         
 
-        new_velocity, _ = self.velocity_control(
-            self.last_velocity, self.v_max, self.acc_max,
-            self.vehicle_x, self.vehicle_y, self.ped_x, self.ped_y,
-            self.track_distance, self.dt
-        )
-
-        self.last_delta = desired_steering_angle
-        self.last_velocity = new_velocity
         
         vel_msg = Twist()
-        vel_msg.linear.x = new_velocity
+        vel_msg.linear.x = self.desired_vehicle_v
         self.dd_vel_publisher.publish(vel_msg)
 
         steering_msg = Float32()
-        steering_msg.data = desired_steering_angle
+        steering_msg.data = self.desired_steering
         self.dd_steering_ang_publisher.publish(steering_msg)
         #print('velocity is %f, steering is %f'%(new_velocity, desired_steering_angle))
 
