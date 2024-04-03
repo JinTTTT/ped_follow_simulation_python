@@ -1,0 +1,3 @@
+[console_scripts]
+driving_decision_exec = driving_decision.driving_decision_node:main
+

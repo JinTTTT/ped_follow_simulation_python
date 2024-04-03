@@ -1,0 +1,178 @@
+[0.568s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.568s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f8685dc3eb0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f8685dc08e0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f8685dc08e0>>)
+[0.596s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.596s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.596s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.596s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.596s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.596s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.596s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2'
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.596s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.603s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extensions ['ignore', 'ignore_ament_install']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extension 'ignore'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extension 'ignore_ament_install'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extensions ['colcon_pkg']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extension 'colcon_pkg'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extensions ['colcon_meta']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extension 'colcon_meta'
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extensions ['ros']
+[0.604s] Level 1:colcon.colcon_core.package_identification:_identify(src/driving_decision) by extension 'ros'
+[0.606s] DEBUG:colcon.colcon_core.package_identification:Package 'src/driving_decision' with type 'ros.ament_python' and name 'driving_decision'
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extensions ['ignore', 'ignore_ament_install']
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extension 'ignore'
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extension 'ignore_ament_install'
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extensions ['colcon_pkg']
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extension 'colcon_pkg'
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extensions ['colcon_meta']
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extension 'colcon_meta'
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extensions ['ros']
+[0.606s] Level 1:colcon.colcon_core.package_identification:_identify(src/get_pedestrian_position_current) by extension 'ros'
+[0.606s] DEBUG:colcon.colcon_core.package_identification:Package 'src/get_pedestrian_position_current' with type 'ros.ament_python' and name 'get_pedestrian_position_current'
+[0.606s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.606s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.606s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.606s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.606s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.662s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.662s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.671s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/py_pubsub' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.679s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/jin/AB_Jin_Tao/simulation/simulation_ros2/install
+[0.688s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 289 installed packages in /opt/ros/humble
+[0.689s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'cmake_args' from command line to 'None'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'cmake_target' from command line to 'None'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'cmake_clean_cache' from command line to 'False'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'cmake_clean_first' from command line to 'False'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'cmake_force_configure' from command line to 'False'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'ament_cmake_args' from command line to 'None'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'catkin_cmake_args' from command line to 'None'
+[0.752s] Level 5:colcon.colcon_core.verb:set package 'driving_decision' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.752s] DEBUG:colcon.colcon_core.verb:Building package 'driving_decision' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/driving_decision', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision', 'merge_install': False, 'path': '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/driving_decision', 'symlink_install': False, 'test_result_base': None}
+[0.760s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'cmake_args' from command line to 'None'
+[0.760s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'cmake_target' from command line to 'None'
+[0.761s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.761s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'cmake_clean_cache' from command line to 'False'
+[0.761s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'cmake_clean_first' from command line to 'False'
+[0.761s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'cmake_force_configure' from command line to 'False'
+[0.761s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'ament_cmake_args' from command line to 'None'
+[0.761s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'catkin_cmake_args' from command line to 'None'
+[0.761s] Level 5:colcon.colcon_core.verb:set package 'get_pedestrian_position_current' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.761s] DEBUG:colcon.colcon_core.verb:Building package 'get_pedestrian_position_current' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current', 'merge_install': False, 'path': '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/get_pedestrian_position_current', 'symlink_install': False, 'test_result_base': None}
+[0.769s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.778s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.778s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/driving_decision' with build type 'ament_python'
+[0.778s] Level 1:colcon.colcon_core.shell:create_environment_hook('driving_decision', 'ament_prefix_path')
+[0.787s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.787s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/hook/ament_prefix_path.ps1'
+[0.788s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/hook/ament_prefix_path.dsv'
+[0.788s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/hook/ament_prefix_path.sh'
+[0.797s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.797s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.824s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/get_pedestrian_position_current' with build type 'ament_python'
+[0.824s] Level 1:colcon.colcon_core.shell:create_environment_hook('get_pedestrian_position_current', 'ament_prefix_path')
+[0.833s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/hook/ament_prefix_path.ps1'
+[0.833s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/hook/ament_prefix_path.dsv'
+[0.834s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/hook/ament_prefix_path.sh'
+[0.842s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.842s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.022s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/driving_decision'
+[1.032s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.032s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.208s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/get_pedestrian_position_current'
+[1.218s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.218s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.446s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/driving_decision': PYTHONPATH=/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/driving_decision/prefix_override:/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/driving_decision build --build-base /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/driving_decision/build install --record /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/driving_decision/install.log --single-version-externally-managed
+[1.448s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/get_pedestrian_position_current': PYTHONPATH=/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/prefix_override:/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/get_pedestrian_position_current build --build-base /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/build install --record /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/install.log --single-version-externally-managed
+[1.626s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/driving_decision' returned '0': PYTHONPATH=/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/driving_decision/prefix_override:/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/driving_decision build --build-base /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/driving_decision/build install --record /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/driving_decision/install.log --single-version-externally-managed
+[1.637s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision' for CMake module files
+[1.637s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision' for CMake config files
+[1.638s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/lib'
+[1.638s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/bin'
+[1.638s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/lib/pkgconfig/driving_decision.pc'
+[1.638s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/lib/python3.10/site-packages'
+[1.638s] Level 1:colcon.colcon_core.shell:create_environment_hook('driving_decision', 'pythonpath')
+[1.646s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/hook/pythonpath.ps1'
+[1.647s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/hook/pythonpath.dsv'
+[1.647s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/hook/pythonpath.sh'
+[1.647s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/bin'
+[1.647s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(driving_decision)
+[1.656s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/package.ps1'
+[1.656s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/package.dsv'
+[1.656s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/package.sh'
+[1.657s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/package.bash'
+[1.657s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/driving_decision/package.zsh'
+[1.658s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/driving_decision/share/colcon-core/packages/driving_decision)
+[1.659s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/src/get_pedestrian_position_current' returned '0': PYTHONPATH=/home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/prefix_override:/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/get_pedestrian_position_current build --build-base /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/build install --record /home/jin/AB_Jin_Tao/simulation/simulation_ros2/build/get_pedestrian_position_current/install.log --single-version-externally-managed
+[1.667s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current' for CMake module files
+[1.667s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current' for CMake config files
+[1.667s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib'
+[1.668s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/bin'
+[1.668s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/pkgconfig/get_pedestrian_position_current.pc'
+[1.668s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/lib/python3.10/site-packages'
+[1.668s] Level 1:colcon.colcon_core.shell:create_environment_hook('get_pedestrian_position_current', 'pythonpath')
+[1.676s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/hook/pythonpath.ps1'
+[1.676s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/hook/pythonpath.dsv'
+[1.677s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/hook/pythonpath.sh'
+[1.677s] Level 1:colcon.colcon_core.environment:checking '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/bin'
+[1.677s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(get_pedestrian_position_current)
+[1.686s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/package.ps1'
+[1.686s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/package.dsv'
+[1.686s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/package.sh'
+[1.686s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/package.bash'
+[1.687s] INFO:colcon.colcon_core.shell:Creating package script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/get_pedestrian_position_current/package.zsh'
+[1.687s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/get_pedestrian_position_current/share/colcon-core/packages/get_pedestrian_position_current)
+[1.687s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.687s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.687s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.687s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.699s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.699s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.699s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.707s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.717s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/local_setup.ps1'
+[1.718s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/_local_setup_util_ps1.py'
+[1.718s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/setup.ps1'
+[1.727s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/local_setup.sh'
+[1.728s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/_local_setup_util_sh.py'
+[1.728s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/setup.sh'
+[1.737s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/local_setup.bash'
+[1.737s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/setup.bash'
+[1.747s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/local_setup.zsh'
+[1.747s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jin/AB_Jin_Tao/simulation/simulation_ros2/install/setup.zsh'
