@@ -21,13 +21,16 @@
 因为实际测试中，能够获取到的行人坐标信息是车辆坐标系下的坐标。因此在模拟行人坐标时首先按照全局坐标来定义，然后通过收到的车辆坐标和横摆角信息，使用坐标转换矩阵进行转换。
 
 
+
 To transform pedestrian coordinates from the global frame to the vehicle frame:
 
-\( \begin{bmatrix} ped\_rel\_x \\ ped\_rel\_y \end{bmatrix} = \begin{bmatrix} \cos(yaw) & \sin(yaw) \\ -\sin(yaw) & \cos(yaw) \end{bmatrix} \begin{bmatrix} translated\_ped\_x \\ translated\_ped\_y \end{bmatrix} \)
+| ped_rel_x | = | cos(yaw)  sin(yaw) | | translated_ped_x |
+| ped_rel_y |   | -sin(yaw) cos(yaw) | | translated_ped_y |
 
 To visualize the transformation of vehicle coordinates back to the global frame:
 
-\( \begin{bmatrix} global\_ped\_x \\ global\_ped\_y \end{bmatrix} = \begin{bmatrix} \cos(yaw) & -\sin(yaw) \\ \sin(yaw) & \cos(yaw) \end{bmatrix} \begin{bmatrix} msg.x \\ msg.y \end{bmatrix} \)
+| global_ped_x | = | cos(yaw) -sin(yaw) | | msg.x |
+| global_ped_y |   | sin(yaw)  cos(yaw) | | msg.y |
 
 
 
