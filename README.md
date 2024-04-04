@@ -21,7 +21,16 @@
 - **输入处理**：处理和解析行人数据(`AVL_Example.json`)，提取行人和车辆的位置信息。
 - **控制策略**：包括横向控制（减少车辆与行人的横向距离）和纵向控制（控制车辆速度，保持与行人的安全距离）。
 
+## 版本信息
+1. Ubutu 22.04
+2. ros2 humble
+
 ## 安装指南
-1. 克隆仓库： gitclone
-2. 安装依赖，编译
-3. source后通过ros2 launch启动：ros2 launch simulation_launch simulation_launch.py 
+1. 克隆仓库：gitclone
+2. 安装依赖：rosdep install --from-paths src --ignore-src --rosdistro humble -y
+3. 编译: colcon build
+4. source install/setup.bash
+5. 启动：ros2 launch simulation_launch simulation_launch.py
+
+
+
