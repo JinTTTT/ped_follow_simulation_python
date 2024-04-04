@@ -5,6 +5,8 @@ from geometry_msgs.msg import Pose2D
 from geometry_msgs.msg import Point
 from std_msgs.msg import Float32
 import matplotlib.pyplot as plt
+from matplotlib import animation
+
 import numpy as np
 import math
 
@@ -16,12 +18,14 @@ class RunSimulation(Node):
         self.ped_x = 0.0
         self.ped_y = 0.0
         
-
         self.vehicle_x = 0.0
         self.vehicle_y = 0.0
         self.vehicle_yaw = 0.0
-        
 
+        self.v_max = 2.0  # 假设的最大速度
+        self.steering_range_max = 30.0  # 假设的最大转向角度
+        self.track_distance = 1.0  # 与行人保持的距离
+        
         # 初始化用于存储数据的列表
         self.ped_x_list = []
         self.ped_y_list = []
@@ -38,6 +42,7 @@ class RunSimulation(Node):
         self.vehicle_pose_subscription =  self.create_subscription(Pose2D, 'vehicle_pose',  self.vehicle_pose_callback, 10)
 
         self.timer = self.create_timer(20.0, self.stop_simulation)
+    
         
     def pedestrian_pos_callback(self, msg):
 
@@ -79,25 +84,29 @@ class RunSimulation(Node):
         self.visualize_data()
         self.timer.cancel()  # 停止计时器以结束仿真
 
+
     def visualize_data(self):
 
         plt.ion()
         figure = plt.figure(figsize=(10, 8))
+        # Create a gridspec layout
+        gs = figure.add_gridspec(2, 2, width_ratios=[3, 1])
+
+
         i = 1
-        while True:
+        while i < len(self.vel_list):
             plt.clf()  # 清除当前图形
 
-            if i > len(self.vehicle_x_list):  # 如果i超过了数据长度，结束循环
-                break
-
             # 绘制车辆和行人路径
-            ax1 = figure.add_subplot(2, 2, 1)
+            ax1 = figure.add_subplot(gs[:, 0])  # This takes up both rows of the first column
             ax1.plot(self.vehicle_x_list[:i], self.vehicle_y_list[:i], 'k-', linewidth=1, label='Vehicle Path')
             ax1.plot(self.ped_x_list[:i], self.ped_y_list[:i], 'b.', markersize=4, label='Pedestrian Path')
             if i > 1:  # 确保至少有一个点
                 ax1.scatter(self.ped_x_list[i-1], self.ped_y_list[i-1], color='g', s=64, label='Current Pedestrian Position')
-                ax1.scatter(self.vehicle_x_list[i-1], self.vehicle_y_list[i-1], color='g', s=64, label='Current Vehicle Position')
-                
+                ax1.scatter(self.vehicle_x_list[i-1], self.vehicle_y_list[i-1], color='r', s=64, label='Current Vehicle Position')
+                circle = plt.Circle((self.ped_x_list[i-1], self.ped_y_list[i-1]), self.track_distance, color='y', fill=False, label='Safety Distance')
+                ax1.add_artist(circle)
+
             ax1.set_xlabel('X Position [m]')
             ax1.set_ylabel('Y Position [m]')
             ax1.set_title('Simulation Path')
@@ -105,16 +114,21 @@ class RunSimulation(Node):
             ax1.axis('equal')
 
             # 绘制转向角度
-            ax2 = figure.add_subplot(2, 2, 3)
+            ax2 = figure.add_subplot(gs[1, 1])  # This takes up the second row of the second column
             ax2.plot(self.steering_list[:i], 'b-', linewidth=1, label='Steering Angle')
+            ax2.axhline(y=self.steering_range_max, color='b', linestyle='--', label='Max Steering Angle')
+            ax2.axhline(y=-self.steering_range_max, color='b', linestyle='--', label='Min Steering Angle')
+
             ax2.set_xlabel('Time [s]')
             ax2.set_ylabel('Steering Angle [deg]')
             ax2.set_title('Steering Angle Over Time')
             ax2.legend(loc='best')
 
             # 绘制速度
-            ax3 = figure.add_subplot(2, 2, 4)
+            ax3 = figure.add_subplot(gs[0, 1])  # This takes up the first row of the second column
             ax3.plot(self.vel_list[:i], 'b-', linewidth=1, label='Velocity')
+            ax3.axhline(y=self.v_max, color='b', linestyle='--', label='Max Velocity')
+
             ax3.set_xlabel('Time [s]')
             ax3.set_ylabel('Velocity [m/s]')
             ax3.set_title('Velocity Over Time')
@@ -127,7 +141,7 @@ class RunSimulation(Node):
             i += 1  # 更新循环变量
 
         plt.ioff()  # 关闭交互模式
-
+        plt.show()  # 显示图片
   
 
         
