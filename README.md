@@ -14,7 +14,9 @@ This project aims to simulate how autonomous vehicles can automatically track pe
 
 ## Simulation Results
 The image below demonstrates how the autonomous vehicle tracks a pedestrain and maintains a track distance during the simulation
-![Simulation Result](https://github.com/JinTTTT/ped_follow_simulation_python/assets/124395755/a438e45c-ad5b-445b-b541-f3851ecf7404)
+![Figure_1](https://github.com/JinTTTT/ped_follow_simulation_python/assets/124395755/a616b0af-d9e8-47fe-bd26-74cad632d553)
+
+
 
 ## Key Points
 ### Create Pedestrain Coordinate Information
