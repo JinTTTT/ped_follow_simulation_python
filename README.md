@@ -18,20 +18,16 @@
 
 ## 关键技术
 ### 模拟行人坐标信息
-因为实际测试中，能够获取到的行人坐标信息是车辆坐标系下的坐标。因此在模拟行人坐标时首先按照全局坐标来定义，然后通过收到的车辆坐标和横摆角信息，使用坐标转换矩阵进行转换。
+因为实际测试中，能够获取到的行人坐标信息是车辆坐标系下的坐标。因此在模拟行人坐标时首先按照全局坐标来定义，然后通过收到的车辆坐标和横摆角信息，使用坐标转换矩阵进行转换。  
 
+To transform pedestrian coordinates from the global frame to the vehicle frame:  
+首先平移：  
+![CodeCogsEqn (1)](https://github.com/JinTTTT/ped_follow_simulation_python/assets/124395755/329c5fc2-8d09-4cf4-bf0d-ce8a84ee65be)  
+旋转：  
+![CodeCogsEqn](https://github.com/JinTTTT/ped_follow_simulation_python/assets/124395755/9c4ad423-17d9-406f-bde5-9ea4192d7923)
 
-
-To transform pedestrian coordinates from the global frame to the vehicle frame:
-
-| ped_rel_x | = | cos(yaw)  sin(yaw) | | translated_ped_x |
-| ped_rel_y |   | -sin(yaw) cos(yaw) | | translated_ped_y |
-
-To visualize the transformation of vehicle coordinates back to the global frame:
-
-| global_ped_x | = | cos(yaw) -sin(yaw) | | msg.x |
-| global_ped_y |   | sin(yaw)  cos(yaw) | | msg.y |
-
+To visualize the transformation of vehicle coordinates back to the global frame:  
+![CodeCogsEqn (2)](https://github.com/JinTTTT/ped_follow_simulation_python/assets/124395755/d82dfc20-499a-4ecc-bdc1-2cd3e84d45d0)
 
 
 ### Vehicle State Update with Ackermann Model
