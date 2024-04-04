@@ -40,7 +40,7 @@ Lateral control is achieved by controlling the vehicle's yaw angle to match the 
 Longitudinal control uses a cascade control strategy: the outer loop controls distance between the vehicle and the pedestrian, and the inner loop controls speed. The logic is to adjust vehicle's speed to match the distance towards the pedestrian, ultimately allowing the vehicle to maintain a set track distance while following the pedestrian.
 
 ## Plattform
-- butu 22.04
+- ubuntu 22.04
 - ros2 humble
 
 ## Installation Guide
