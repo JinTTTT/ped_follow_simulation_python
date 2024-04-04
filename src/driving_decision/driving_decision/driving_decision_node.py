@@ -92,8 +92,8 @@ class DrivingDecision(Node):
     
 
     def velocity_control(self):
-        Kp_distance = 0.5  # P-regler für Abstandregelung
-        Kp_vel = 2.0  # P-regler für Geschwindigkeitsregelung
+        Kp_distance = 1.0  # P-regler für Abstandregelung
+        Kp_vel = 1.0  # P-regler für Geschwindigkeitsregelung
 
         # Abstandsregelung basierend auf der x-Position des Fußgängers relativ zum Fahrzeug
         distance_diff = self.ped_x - self.track_distance
