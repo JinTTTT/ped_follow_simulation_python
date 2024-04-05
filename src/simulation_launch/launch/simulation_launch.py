@@ -16,7 +16,7 @@ def generate_launch_description():
             output='screen'
         ),
         Node(
-            package='update_vehicle_state',
+            package='driving_decision',
             executable='update_vehicle_state_exec',
             name='update_vehicle_state_node',
             output='screen'

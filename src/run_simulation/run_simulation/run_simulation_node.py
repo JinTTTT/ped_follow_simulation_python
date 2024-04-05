@@ -104,7 +104,7 @@ class RunSimulation(Node):
             if i > 1:  # 确保至少有一个点
                 ax1.scatter(self.ped_x_list[i-1], self.ped_y_list[i-1], color='g', s=64, label='Current Pedestrian Position')
                 ax1.scatter(self.vehicle_x_list[i-1], self.vehicle_y_list[i-1], color='r', s=64, label='Current Vehicle Position')
-                circle = plt.Circle((self.ped_x_list[i-1], self.ped_y_list[i-1]), self.track_distance, color='y', fill=False, label='Safety Distance')
+                circle = plt.Circle((self.ped_x_list[i-1], self.ped_y_list[i-1]), self.track_distance, color='y', fill=False, label='Track Distance')
                 ax1.add_artist(circle)
 
             ax1.set_xlabel('X Position [m]')
@@ -116,10 +116,10 @@ class RunSimulation(Node):
             # 绘制转向角度
             ax2 = figure.add_subplot(gs[1, 1])  # This takes up the second row of the second column
             ax2.plot(self.steering_list[:i], 'b-', linewidth=1, label='Steering Angle')
-            ax2.axhline(y=self.steering_range_max, color='b', linestyle='--', label='Max Steering Angle')
-            ax2.axhline(y=-self.steering_range_max, color='b', linestyle='--', label='Min Steering Angle')
+            ax2.axhline(y=self.steering_range_max, color='r', linestyle='--', label='Max Steering Angle')
+            ax2.axhline(y=-self.steering_range_max, color='r', linestyle='--', label='Min Steering Angle')
 
-            ax2.set_xlabel('Time [s]')
+            ax2.set_xlabel('Time [0.1s]')
             ax2.set_ylabel('Steering Angle [deg]')
             ax2.set_title('Steering Angle Over Time')
             ax2.legend(loc='best')
@@ -127,9 +127,9 @@ class RunSimulation(Node):
             # 绘制速度
             ax3 = figure.add_subplot(gs[0, 1])  # This takes up the first row of the second column
             ax3.plot(self.vel_list[:i], 'b-', linewidth=1, label='Velocity')
-            ax3.axhline(y=self.v_max, color='b', linestyle='--', label='Max Velocity')
+            ax3.axhline(y=self.v_max, color='r', linestyle='--', label='Max Velocity')
 
-            ax3.set_xlabel('Time [s]')
+            ax3.set_xlabel('Time [0.1s]')
             ax3.set_ylabel('Velocity [m/s]')
             ax3.set_title('Velocity Over Time')
             ax3.legend(loc='best')

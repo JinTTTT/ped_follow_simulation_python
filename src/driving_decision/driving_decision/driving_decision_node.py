@@ -129,8 +129,6 @@ class DrivingDecision(Node):
         self.desired_steering = self.steering_control()
         self.desired_vehicle_v = self.velocity_control()
         
-
-        
         vel_msg = Twist()
         vel_msg.linear.x = self.desired_vehicle_v
         self.dd_vel_publisher.publish(vel_msg)

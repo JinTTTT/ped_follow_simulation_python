@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             #  pedestrain_pos_current is a executable command name, used by terminal to call ros2 run
             'driving_decision_exec = driving_decision.driving_decision_node:main',
+            'update_vehicle_state_exec = driving_decision.update_vehicle_state_node:main',
         ],
     },
 )
